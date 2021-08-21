@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DailySimpleNotes.Views.NotePage">
+    <ContentPage.Content>
+        <Frame BorderColor="Gray" HasShadow="True" CornerRadius="5" Margin="8">
+                <StackLayout>
+                    <Label Text="Nombre:" FontSize="Medium"/>
+                    
+                    <Entry x:Name="titleEntry" HorizontalOptions="Fill" Text="{Binding Title}"></Entry>
+                    <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+                    
+                    <Label Text="Apellido:" FontSize="Medium"/>
+                   
+                    <Editor x:Name="textEntry" Text="{Binding Text}" ></Editor>
+                    <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+                    
+                    <Label Text="Edad:" FontSize="Medium"/>
+                   
+                    <Editor x:Name="textMonto" Text="{Binding Monto}" ></Editor>
+                    <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+                    
+                    <Label Text="Direccion:" FontSize="Medium"/>
+                   
+                    <Editor x:Name="textDireccion" Text="{Binding Direccion}" ></Editor>
+                    <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+                    
+                    <Label Text="Puesto:" FontSize="Medium"/>
+                   
+                    <Editor x:Name="textPuesto" Text="{Binding Puesto}" ></Editor>
+                    <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+                    
+                    <Grid HeightRequest="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                    
+                    <Label Text="Seleccione :" FontSize="Small" Grid.Column="0"/>
+                        <Button BackgroundColor="{Binding Color}" BorderWidth="1" BorderColor="Black" Grid.Column="1" />
+                        <Label Text="Change:" FontSize="Small" Grid.Column="2"/>
+                        <Button Command="{Binding ListViewModel.PickColorGreenCommand}" CommandParameter="{Binding .}" BackgroundColor="Green" BorderWidth="1" BorderColor="Black" Grid.Column="3" />
+                        <Button Command="{Binding ListViewModel.PickColorYellowCommand}" CommandParameter="{Binding .}"  BackgroundColor="Yellow" BorderWidth="1" BorderColor="Black" Grid.Column="4" />
+                        <Button Command="{Binding ListViewModel.PickColorRedCommand}" CommandParameter="{Binding .}"  BackgroundColor="Red" BorderWidth="1" BorderColor="Black" Grid.Column="5" />
+                    </Grid>
+                    <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+                    <Button Text="Guardar" Command="{Binding ListViewModel.GoBackCommand}" CommandParameter="{Binding .}" FontSize="Medium" CornerRadius="5" />
+                    <Label Text="{Binding CreationData}" FontSize="Small" TextColor="Black" HorizontalOptions="End"/>
+
+                </StackLayout>
+            </Frame>
+    </ContentPage.Content>
+</ContentPage>

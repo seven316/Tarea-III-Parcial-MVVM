@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DailySimpleNotes.Views.NoteTextPage">
+    <ContentPage.Content>
+        <Frame BorderColor="Gray" HasShadow="True" CornerRadius="5" Margin="5">
+            <StackLayout>
+                <Label Text="ID:" FontSize="Medium"/>
+                <Label HorizontalOptions="Fill" Text="{Binding Id}" />
+                <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+                
+                <Label Text="Nombre:" FontSize="Medium"/>
+                <Label HorizontalOptions="Fill" Text="{Binding Title}" />
+                <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+                
+                <Label Text="Apellido:" FontSize="Medium"/>
+                <Label Text="{Binding Text}" />
+                <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+
+                <Label Text="Edad:" FontSize="Medium"/>
+                <Label Text="{Binding Monto}" />
+                <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+
+                <Label Text="Direccion:" FontSize="Medium"/>
+                <Label Text="{Binding Direccion}" />
+                <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+
+                <Label Text="Puesto:" FontSize="Medium"/>
+                <Label Text="{Binding Puesto}" />
+                <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+
+                <Label Text="{Binding CreationData}" FontSize="Small" TextColor="Black" HorizontalOptions="End"/>
+
+
+                <Button Text="Volver Atras" Command="{Binding ListViewModel.GoBackCommand}" FontSize="Medium" CornerRadius="5" />
+
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

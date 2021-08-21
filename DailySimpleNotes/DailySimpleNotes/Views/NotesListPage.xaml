@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DailySimpleNotes.Views.NotesListPage">
+
+    <ContentPage.Content>
+        <Frame BorderColor="Gray" HasShadow="True" CornerRadius="5" Margin="8">
+            <StackLayout>
+                <Label Text="Registros de Empleados" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                <BoxView Color="Gray" HeightRequest="2" HorizontalOptions="Fill" />
+                <!-- CReateCommand -->
+                <Button x:Name="createNoteButton" Text="Nuevo empleado" CornerRadius="5" Command="{Binding CreateNoteCommand}" />
+                <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+
+                <ListView x:Name="listOfNotes" HasUnevenRows="True" ItemsSource="{Binding Notes}" SelectedItem="{Binding SelectedNote, Mode=TwoWay}" HorizontalOptions="Fill">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnSpacing="1" Margin="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="5*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Frame BorderColor="Black" HasShadow="True" BackgroundColor="{Binding Color}" CornerRadius="50" IsClippedToBounds="True" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"></Frame>
+                                    <Label Text="{Binding Title}" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" TextColor="Black" Grid.Column="1"/>
+                                    <ImageButton Command="{Binding Path=BindingContext.EditNoteCommand, Source={x:Reference Name=listOfNotes}}" CommandParameter="{Binding .}" Source="edit.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="2"/>
+                                    <ImageButton Command="{Binding Path=BindingContext.DeleteNoteCommand, Source={x:Reference Name=listOfNotes}}" CommandParameter="{Binding .}" Source="del.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="3"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+                <Label Text="Presione el boton para agregar un nuevo Empleado."/>
+
+                <!-- Buttons for ListView commands -->
+                <Button x:Name="editNote" Command="{Binding EditNoteCommand}" IsVisible="False" IsEnabled="False" WidthRequest="0" HeightRequest="0"/>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>
